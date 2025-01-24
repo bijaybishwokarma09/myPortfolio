@@ -33,13 +33,20 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content" data-aos="fade-up">
-            <h1>Bijay Bishowkarma</h1>
-            <h2>AI/ML & Data Science Expert</h2>
-            <p>Transforming data into intelligent solutions</p>
-            <a href="#contact" class="cta-button">Get In Touch</a>
+            <div class="hero-text">
+                <h1>Bijay Bishowkarma</h1>
+                <h2>AI/ML & Data Science Expert</h2>
+                <p>Transforming data into intelligent solutions</p>
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
+                <div class="profile-img-container">
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Bijay Bishowkarma" class="profile-img">
+                </div>
+            </div>
         </div>
     </section>
-
+    
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
