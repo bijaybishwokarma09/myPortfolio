@@ -80,6 +80,70 @@ contactForm.addEventListener('submit', async (e) => {
     }
 });
 
+// Form submission
+document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = this.querySelector('.submit-btn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+
+    const formData = {
+        name: this.querySelector('#name').value,
+        email: this.querySelector('#email').value,
+        subject: this.querySelector('#subject').value,
+        message: this.querySelector('#message').value
+    };
+
+    try {
+        const response = await fetch('/send_message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            alert('Message sent successfully!');
+            this.reset();
+        } else {
+            alert('Error sending message: ' + result.message);
+        }
+    } catch (error) {
+        alert('Error sending message. Please try again.');
+        console.error('Error:', error);
+    } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }
+});
+
+// Add active class to nav links
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 60) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
+});
+
 // Skill progress bar animation
 const skillCards = document.querySelectorAll('.skill-card');
 const observerOptions = {

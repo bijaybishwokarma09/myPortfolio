@@ -30,10 +30,17 @@ def send_message():
     try:
         data = request.json
         msg = Message(
-            subject=f"Portfolio Contact from {data['name']}",
+            subject=f"Portfolio Contact: {data.get('subject', 'No Subject')}",
             sender=app.config['MAIL_DEFAULT_SENDER'],
             recipients=[app.config['MAIL_USERNAME']],
-            body=f"Name: {data['name']}\nEmail: {data['email']}\nMessage: {data['message']}"
+            body=f"""
+Name: {data['name']}
+Email: {data['email']}
+Subject: {data.get('subject', 'No Subject')}
+
+Message:
+{data['message']}
+            """
         )
         mail.send(msg)
         return jsonify({"status": "success", "message": "Message sent successfully!"})
