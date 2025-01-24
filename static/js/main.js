@@ -17,11 +17,11 @@ window.addEventListener('scroll', () => {
 
 // Mobile menu toggle
 const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
+const navLinksContainer = document.querySelector('.nav-links');
 const links = document.querySelectorAll('.nav-links li');
 
 burger.addEventListener('click', () => {
-    navLinks.classList.toggle('nav-active');
+    navLinksContainer.classList.toggle('nav-active');
     
     // Animate links
     links.forEach((link, index) => {
