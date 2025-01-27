@@ -476,39 +476,230 @@ section h2 {
 .social-link.twitter { background: #1DA1F2; }
 .social-link.facebook { background: #1877F2; }
 
-@media (max-width: 768px) {
-    .contact-content {
-        grid-template-columns: 1fr;
+/* Responsive Design - Media Queries */
+/* Large Devices (Desktops & Laptops) */
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
     }
-    
-    .contact-form {
-        padding: 2rem;
-    }
-    
-    .nav-content {
+
+    .hero-content {
         padding: 0 1rem;
     }
-    
-    .nav-links {
-        gap: 1rem;
+
+    .profile-img-container {
+        width: 400px;
+        height: 500px;
     }
-    
-    .nav-link {
-        padding: 0.3rem 0.8rem;
-        font-size: 0.9rem;
+}
+
+/* Medium Devices (Tablets & Smaller Laptops) */
+@media screen and (max-width: 992px) {
+    .container {
+        max-width: 720px;
     }
-    
-    .contact-info {
+
+    .hero {
+        height: auto;
+        padding: 120px 0;
+    }
+
+    .hero-content {
+        flex-direction: column-reverse;
         text-align: center;
     }
 
-    .social-links {
-        justify-content: center;
+    .hero h1 {
+        font-size: 2.8rem;
     }
 
-    .contact-item {
-        justify-content: center;
+    .hero h2 {
+        font-size: 1.8rem;
     }
+
+    .profile-img-container {
+        width: 350px;
+        height: 450px;
+        margin-bottom: 2rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Small Devices (Mobile Landscape) */
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .nav-content {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 20px 0;
+        gap: 0;
+    }
+
+    .nav-links.nav-active {
+        right: 0;
+    }
+
+    .nav-link {
+        margin: 1.5rem 0;
+        display: block;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .profile-img-container {
+        width: 300px;
+        height: 400px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+
+/* Extra Small Devices (Mobile Portrait) */
+@media screen and (max-width: 576px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero {
+        padding: 100px 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .profile-img-container {
+        width: 250px;
+        height: 350px;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.8rem;
+    }
+}
+
+/* Ensure proper display on very small devices */
+@media screen and (max-width: 320px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .profile-img-container {
+        width: 220px;
+        height: 320px;
+    }
+
+    .container {
+        padding: 0 0.8rem;
+    }
+}
+
+/* Height-based media queries for better vertical responsiveness */
+@media screen and (max-height: 700px) {
+    .hero {
+        padding: 80px 0;
+    }
+
+    .profile-img-container {
+        height: 300px;
+    }
+}
+
+/* Add burger menu styles if not already present */
+.burger {
+    display: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Burger animation classes */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Footer */
